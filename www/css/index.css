@@ -24,3 +24,16 @@ body {
     bottom: 6px;
     right: 6px;   
 }
+
+#div-nova-tarefa {
+    background-color: #3a070714;
+    padding: 11px;
+    border-radius: 2px;
+    border: 2px solid #00800040;
+    /* color: white; */
+    margin-top: 10px;
+}
+
+input#descricao {
+    color: white;
+}

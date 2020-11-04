@@ -26,12 +26,12 @@
             <li>  <a href="#!">Limpar Tarefa</a>   </li>
        </ul>
 
-		<div class="container">
-            <div id="div-nova-tarefa" class="container" style="display:none">
+		<div class="container" >
+            <div id="div-nova-tarefa" class="z-depth-1" style="display:none">
                 <input type="text" id="descricao"
                    placeholder="Digite o que deve ser feito.">
 
-                <a href="#!" class='btn breen'> Incluir </a>
+                <a href="#!" id='btnincluir' class='btn breen'> Incluir </a>
                 <a href="#!" id="btncancelar" class='btn red'> Cancelar </a>
 
             </div>
@@ -46,6 +46,7 @@
          <script src="cordova.js"></script>
          <script src='js/jquery-3.5.1.min.js'></script>
 		<script src="js/materialize.min.js"></script>
+        <script src="js/db.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>
