@@ -6,13 +6,14 @@ function onDeviceReady() {
     window.banco = new bancoDados();
     window.banco.preparar(function(db){
         console.log("Banco de dados local inicializado!");
+        
     },function(erro){
         console.log("Erro inicializando o banco de dados:\n"+JSON.stringify(erro)   );
     });
 }
 
 function erroDB(){
-    console.log('Erro inserindo no banco de dados');
+  //  console.log('Erro inserindo no banco de dados');
 }
 
 function bancoDados() {
@@ -52,6 +53,20 @@ function bancoDados() {
 
          },
          consultar: function(){
+
+         },
+         listar: function(sucesso) {
+
+             this.db.transaction( function(tx){
+                tx.executeSql("SELECT * FROM tarefas",[],function(tx,registros){
+                     
+                    sucesso(registros.rows);
+
+                },erroDB());
+
+
+             } );
+
 
          }
 
