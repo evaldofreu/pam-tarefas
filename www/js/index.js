@@ -14,12 +14,19 @@ function carregueTarefas(){
             +'<i class="material-icons circle red">insert_chart</i>'
             +'<span class="title">Tarefa</span>'
             +'<p>'+registros[i].descricao+'</p>'
-            +'<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>'
+            +'<a href="#!" class="secondary-content delete-tarefa" tarefa_id="'+registros[i].id+'"><i class="material-icons">delete</i></a>'
             +'</li>';
         
             lista.append(item);
 
         }
+        $(".delete-tarefa").click(function(){
+           var tarefa_id = $(this).attr("tarefa_id");
+           var li = $(this).parent(); 
+           window.banco.excluir(tarefa_id, function(){
+                 $(li).remove();
+           });
+        });
 
 
     });

@@ -40,7 +40,7 @@ function bancoDados() {
 
                         sucesso(results);
 
-                    },erroDB());
+                    },erroDB);
 
             }  );
 
@@ -49,11 +49,15 @@ function bancoDados() {
 
             
          },
-         excluir : function(){
-
+         excluir : function(tarefa_id, callback){
+            this.db.transaction(function(tx){
+                tx.executeSql('DELETE FROM tarefas where id = ?',[tarefa_id],function(tx, results){
+                    callback();
+                })
+            });
          },
          consultar: function(){
-
+         
          },
          listar: function(sucesso) {
 
