@@ -8,12 +8,13 @@ function carregueTarefas(){
 
     window.banco.listar(function(registros){
         var lista = $("#lista-tarefas");
+        $(lista).html("");
         for (var i=0;i<registros.length;i++){
             
             var item = '<li class="collection-item avatar">'
             +'<i class="material-icons circle red">insert_chart</i>'
             +'<span class="title">Tarefa</span>'
-            +'<p>'+registros[i].descricao+'</p>'
+            +'<p class="tarefa-descricao">'+registros[i].descricao+'</p>'
             +'<a href="#!" class="secondary-content delete-tarefa" tarefa_id="'+registros[i].id+'"><i class="material-icons">delete</i></a>'
             +'</li>';
         
@@ -45,6 +46,9 @@ function eventos(){
     $("#btnincluir").click(function(){
         var descricao = $("#descricao").val();
         window.banco.salvar(descricao, function(resultados){
+            $("#div-nova-tarefa").slideUp('slow', function(){
+                carregueTarefas();
+            });
            console.log(resultados);
         });
     });
@@ -54,6 +58,19 @@ function eventos(){
         $("#div-nova-tarefa").fadeOut();
     });
 
+
+    $('#search').change(function(){
+        let filtro = $(this).val();
+        
+        $(".tarefa-descricao").each(function(){
+            if ($(this).text().includes(filtro)) {
+                $(this).parent().show();
+            } else {
+                $(this).parent().hide();
+            }
+        });
+
+    });
 
 }
 
